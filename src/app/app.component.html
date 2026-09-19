@@ -1,0 +1,100 @@
+<div class="toolbar">
+  <div>
+    <strong>CV profesional · Angular · Vue Js · React  </strong>
+    <span>Diseño responsive y preparado para impresión en PDF</span>
+  </div>
+ <button type="button" (click)="printCv()" class="download-btn">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+    <polyline points="7 10 12 15 17 10"></polyline>
+    <line x1="12" y1="15" x2="12" y2="3"></line>
+  </svg>
+</button>
+</div>
+
+<main class="page-shell">
+  <section class="cv-layout">
+    <aside class="sidebar">
+      <div class="monogram">JA</div>
+
+      <section class="side-block">
+        <h2>Contactar</h2>
+        <p>Santiago de Chile, Tarapaca 876</p>
+        <p>+56982838554 (Mobile)</p>
+        <p><a href="mailto:jwarteaga@hotmail.com">jwarteaga@hotmail.com</a></p>
+        <p><a href="https://www.linkedin.com/in/jesman-arteaga-2480691b" target="_blank" rel="noreferrer">www.linkedin.com/in/jesman-arteaga-2480691b (LinkedIn)</a></p>
+      </section>
+
+      <section class="side-block">
+        <h2>Aptitudes principales</h2>
+        <div class="tags">
+          <span *ngFor="let skill of skills">{{ skill }}</span>
+        </div>
+      </section>
+
+      <section class="side-block">
+        <h2>Certifications</h2>
+        <ul class="clean-list">
+          <li *ngFor="let certification of certifications">{{ certification }}</li>
+        </ul>
+      </section>
+    </aside>
+
+    <article class="content">
+      <header class="hero">
+        <p class="eyebrow">CURRÍCULUM PROFESIONAL</p>
+        <h1>Jesman Arteaga</h1>
+        <p class="headline">SENIOR FULL-STACK DEVELOPER : Spring Boot | Angular 20.0 | Vue Js | Bootstrap | JavaScript | Azure IA | React Js | TypeScript | Thymeleaf | Node Js | Laravel | Codeigniter | AWS| Docker| Microservicios | Scrum</p>
+        <p class="location">Gran Santiago, Región Metropolitana de Santiago, Chile</p>
+      </header>
+
+      <section class="section">
+        <div class="section-title-row">
+          <h2>Experiencia</h2>
+          <span class="line"></span>
+        </div>
+
+        <div class="timeline">
+          <section class="experience-card" *ngFor="let exp of experiencias">
+            <span class="timeline-dot"></span>
+            <div class="experience-topline">
+              <div>
+                <h3>{{ exp.company }}</h3>
+                <p class="role">{{ exp.role }}</p>
+              </div>
+              <p class="period">{{ exp.period }}</p>
+            </div>
+            <p class="exp-location" *ngIf="exp.location">{{ exp.location }}</p>
+            <div class="description" *ngIf="exp.paragraphs?.length">
+              <p *ngFor="let paragraph of exp.paragraphs">{{ paragraph }}</p>
+            </div>
+            <ul class="achievement-list" *ngIf="exp.bullets?.length">
+              <li *ngFor="let bullet of exp.bullets">{{ bullet }}</li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <section class="section education-section">
+        <div class="section-title-row">
+          <h2>Educación</h2>
+          <span class="line"></span>
+        </div>
+        <div class="education-card">
+          <h3>Universidad Central de Venezuela</h3>
+          <p>Ingeniero Civil Computacion - Licenciado en Computacion · (2002 - 2015)</p>
+        </div>
+      </section>
+    </article>
+  </section>
+</main>
