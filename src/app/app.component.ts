@@ -18,7 +18,7 @@ type Experience = {
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  readonly skills = ['AngularJS', 'Spring Boot', 'Infraestructura de software'];
+  readonly skills = ['Angular JS', 'Vue JS', 'Spring Boot', 'Infraestructura de software'];
   readonly certifications = ['Spring Boot', 'Azure Inteligencia Artificial', 'Scrum', 'Scrum Foundation', 'Vue JS', 'IA Generativa', 'Docker', 'Liderazgo en la era IA: Gestión y adaptación en la Sociedad 5.0'];
 
   readonly experiencias: Experience[] = [
