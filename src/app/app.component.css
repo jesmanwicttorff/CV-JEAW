@@ -204,15 +204,196 @@
 }
 
 @media print {
-  .page-shell { width: 100%; }
-  .cv-layout { grid-template-columns: 255px minmax(0, 1fr); }
-  .sidebar { padding: 32px 22px; }
-  .content { padding: 34px 34px 40px; }
-  .hero h1 { font-size: 42px; }
-  .headline { font-size: 13px; }
-  .description p, .achievement-list li { font-size: 11px; line-height: 1.45; }
-  .experience-card h3 { font-size: 14px; }
-  .role { font-size: 12px; }
-  .period, .exp-location { font-size: 10px; }
-  .side-block p, .side-block li, .side-block a { font-size: 11px; }
+  /*
+   * PDF: conservamos el mismo diseño del frontend, pero usamos medidas de
+   * impresión y pesos tipográficos reales para evitar texto borroso o
+   * excesivamente grueso.
+   */
+  :host {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-synthesis: none;
+  }
+
+  .page-shell {
+    width: 210mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .cv-layout {
+    grid-template-columns: 58mm minmax(0, 1fr);
+    min-height: 297mm;
+    background: transparent;
+  }
+
+  .sidebar {
+    padding: 11mm 7mm;
+    background: linear-gradient(180deg, #153943 0%, #102f37 100%) !important;
+    color: #eef8f8 !important;
+  }
+
+  .content { padding: 11mm 10mm 12mm; }
+
+  .monogram {
+    width: 16mm;
+    height: 16mm;
+    margin-bottom: 8mm;
+    border-radius: 4mm;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .side-block { margin-bottom: 7mm; }
+  .side-block h2 {
+    margin-bottom: 3mm;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: .11em;
+    color: #b8dde0 !important;
+  }
+  .side-block p,
+  .side-block li,
+  .side-block a {
+    margin-bottom: 1.5mm;
+    color: #f4fbfb !important;
+    font-size: 10.5px;
+    font-weight: 400;
+    line-height: 1.42;
+  }
+  .tags { gap: 1.5mm; }
+  .tags span {
+    padding: 1.4mm 2mm;
+    font-size: 9.5px;
+    font-weight: 400;
+    background: rgba(255, 255, 255, .10) !important;
+    border-color: rgba(255, 255, 255, .18) !important;
+  }
+
+  .hero {
+    padding-bottom: 6mm;
+    border-bottom-color: #d7e0e4 !important;
+  }
+  .eyebrow {
+    margin-bottom: 2mm;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    color: #0f6872 !important;
+  }
+  .hero h1 {
+    font-size: 31px;
+    line-height: 1.04;
+    font-weight: 500;
+    letter-spacing: -.025em;
+    color: #14242d !important;
+  }
+  .headline {
+    margin: 4mm 0 2.5mm;
+    font-size: 11px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: #263f49 !important;
+  }
+  .location {
+    font-size: 10.5px;
+    font-weight: 400;
+    color: #65747d !important;
+  }
+
+  .section { padding-top: 6mm; }
+  .section-title-row {
+    gap: 4mm;
+    margin-bottom: 5mm;
+  }
+  .section-title-row h2 {
+    font-size: 17px;
+    font-weight: 500;
+    color: #17323c !important;
+  }
+  .line { background: #d5dfe3 !important; }
+
+  .timeline { padding-left: 5mm; }
+  .timeline::before {
+    left: 1mm;
+    width: .5mm;
+    background: #c4dadd !important;
+  }
+  .experience-card {
+    padding: 0 0 5.5mm 5mm;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+  .timeline-dot {
+    left: -5.9mm;
+    top: 1.5mm;
+    width: 3mm;
+    height: 3mm;
+    border-width: .7mm;
+    background: #0f6872 !important;
+    border-color: #fff !important;
+    box-shadow: 0 0 0 .5mm #9cc9ce;
+  }
+  .experience-topline { gap: 4mm; }
+  .experience-card h3 {
+    font-size: 12px;
+    line-height: 1.25;
+    font-weight: 600;
+    color: #172f38 !important;
+  }
+  .role {
+    margin-top: 1mm;
+    font-size: 10.5px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: #365762 !important;
+  }
+  .period {
+    min-width: 44mm;
+    font-size: 9.5px;
+    line-height: 1.35;
+    font-weight: 400;
+    color: #52636c !important;
+  }
+  .exp-location {
+    margin: 1.2mm 0 2.3mm;
+    font-size: 9.5px;
+    line-height: 1.35;
+    font-weight: 400;
+    color: #65757d !important;
+  }
+  .description p,
+  .achievement-list li {
+    color: #2f3f47 !important;
+    font-size: 10px;
+    line-height: 1.42;
+    font-weight: 400;
+  }
+  .description p { margin: 1mm 0; }
+  .achievement-list {
+    margin-top: 2mm;
+    padding-left: 4.5mm;
+  }
+  .achievement-list li { margin-bottom: 1.2mm; }
+
+  .education-section { padding-bottom: 3mm; }
+  .education-card {
+    padding: 4mm 5mm;
+    border-radius: 4mm;
+    background: #f8fafb !important;
+    border-color: #d8e1e5 !important;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+  .education-card h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #17323c !important;
+  }
+  .education-card p {
+    font-size: 10.5px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: #455861 !important;
+  }
 }

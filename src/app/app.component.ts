@@ -19,7 +19,7 @@ type Experience = {
 })
 export class AppComponent {
   readonly skills = ['AngularJS', 'Spring Boot', 'Infraestructura de software'];
-  readonly certifications = ['Spring Boot', 'Azure Inteligencia Artificial', 'Scrum', 'Scrum Foundation', 'Vue JS', 'IA Generativa', 'Docker'];
+  readonly certifications = ['Spring Boot', 'Azure Inteligencia Artificial', 'Scrum', 'Scrum Foundation', 'Vue JS', 'IA Generativa', 'Docker', 'Liderazgo en la era IA: Gestión y adaptación en la Sociedad 5.0'];
 
   readonly experiencias: Experience[] = [
     {
@@ -155,6 +155,19 @@ export class AppComponent {
   ];
 
   printCv(): void {
-    window.print();
+    const originalTitle = document.title;
+    document.title = 'CV-Jesman-Arteaga';
+
+    const restoreTitle = (): void => {
+      document.title = originalTitle;
+    };
+
+    window.addEventListener('afterprint', restoreTitle, { once: true });
+
+    // Espera a que las fuentes estén listas antes de abrir la impresión.
+    // Esto evita diferencias de renderizado al generar el PDF.
+    document.fonts.ready
+      .then(() => window.print())
+      .catch(() => window.print());
   }
 }

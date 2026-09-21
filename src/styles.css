@@ -12,10 +12,58 @@ body { margin: 0; min-width: 320px; background: #eef2f6; }
 button, a { font: inherit; }
 
 @media print {
-  @page { size: A4; margin: 0; }
-  body { background: white; }
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html, body {
+    width: 210mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: linear-gradient(
+      to right,
+      #153943 0,
+      #153943 58mm,
+      #ffffff 58mm,
+      #ffffff 100%
+    ) !important;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-synthesis: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Mantiene fondos, colores y bordes del CV en el PDF. */
+  app-root,
+  app-root * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Oculta la barra del sitio y cualquier elemento externo inyectado
+     alrededor de la aplicación (por ejemplo, toolbars de previews). */
   .toolbar { display: none !important; }
-  .page-shell { margin: 0 !important; box-shadow: none !important; max-width: none !important; }
-  .cv-layout { min-height: 100vh; }
-  .experience-card { break-inside: avoid; }
+  body > *:not(app-root):not(script) { display: none !important; }
+
+  .page-shell {
+    width: 210mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    max-width: none !important;
+    background: transparent !important;
+  }
+
+  .cv-layout {
+    min-height: 297mm;
+    background: transparent !important;
+  }
+
+  .content { background: #fff !important; }
+
+  .experience-card,
+  .education-card {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
 }
